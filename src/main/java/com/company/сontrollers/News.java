@@ -20,6 +20,7 @@ public class News{
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/add/admin")
     public Response add(New news) {
         try {
             newDB.addNews(news);
@@ -31,7 +32,7 @@ public class News{
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/update")
+    @Path("/update/admin")
     public Response update(New news){
         try{
             newDB.update(news);
@@ -42,7 +43,7 @@ public class News{
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("/admin/{id}")
     public Response delete(@PathParam("id") Long id){
         try{
             newDB.remove(id);

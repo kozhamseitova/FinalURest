@@ -66,10 +66,11 @@ public class ClubDB extends DB {
     {
         try
         {
-            PreparedStatement preparedStatement = connection.prepareStatement("update clubs set img=?, description=? where name=?");
-            preparedStatement.setString(1, club.getImg());
-            preparedStatement.setString(2, club.getDescription());
-            preparedStatement.setString(3, club.getName());
+            PreparedStatement preparedStatement = connection.prepareStatement("update clubs set id=?, img=?, description=? where name=?");
+            preparedStatement.setLong(1, club.getId());
+            preparedStatement.setString(2, club.getImg());
+            preparedStatement.setString(3, club.getDescription());
+            preparedStatement.setString(4, club.getName());
             preparedStatement.executeUpdate();
         }
         catch (SQLException sqlException)
@@ -78,11 +79,11 @@ public class ClubDB extends DB {
         }
     }
 
-    public void remove(String name){
+    public void remove(long id){
         try
         {
-            PreparedStatement preparedStatement = connection.prepareStatement("delete from clubs where name = ?");
-            preparedStatement.setString(1, name);
+            PreparedStatement preparedStatement = connection.prepareStatement("delete from clubs where id = ?");
+            preparedStatement.setLong(1, id);
             preparedStatement.executeUpdate();
         }
         catch (SQLException sqlException)

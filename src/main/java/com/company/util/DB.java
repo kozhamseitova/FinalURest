@@ -17,8 +17,18 @@ import java.util.List;
 
 public class DB implements IDB<Student>{
     private static Connection connection;
+    private static DB instance = null;
+
+    public static DB getInstance(){
+        if(instance == null){
+            instance = new DB();
+        }
+        return instance;
+    }
+
 
     public DB() {
+        connection = getConnection();
     }
 
     public Connection getConnection(){

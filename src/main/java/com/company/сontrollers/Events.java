@@ -20,6 +20,7 @@ public class Events{
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/add/admin")
     public Response add(Event event) {
         try {
             eventDB.addEvents(event);
@@ -31,7 +32,7 @@ public class Events{
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/update")
+    @Path("/update/admin")
     public Response update(Event event){
         try{
             eventDB.update(event);
@@ -42,7 +43,7 @@ public class Events{
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("/admin/{id}")
     public Response delete(@PathParam("id") Long id){
         try{
             eventDB.remove(id);
